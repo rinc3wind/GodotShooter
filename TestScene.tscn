@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4dh3yiav5t7o" path="res://Assets/UI/hud.tscn" id="8_exllb"]
 [ext_resource type="Texture2D" uid="uid://j4bkqoy8w6x8" path="res://Assets/enemies/imp_whole.png" id="8_rxm5d"]
 [ext_resource type="Texture2D" uid="uid://b7t7b7tx40wds" path="res://Assets/enemies/imp.png" id="9_b3dy1"]
-[ext_resource type="PackedScene" uid="uid://dao4f1kd1jw5w" path="res://Assets/effects/fireball.tscn" id="9_exllb"]
+[ext_resource type="PackedScene" uid="uid://dao4f1kd1jw5w" path="res://Assets/effects/fireball/fireball.tscn" id="9_exllb"]
 [ext_resource type="Script" uid="uid://fs5nff8j0pr4" path="res://Scripts/imp.gd" id="9_rxm5d"]
 [ext_resource type="Texture2D" uid="uid://cjlrn2lon7ocv" path="res://Assets/NPCs/Jack.png" id="11_7tcvf"]
 

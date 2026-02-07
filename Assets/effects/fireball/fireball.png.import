@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cci2c4vsdbsap"
-path.s3tc="res://.godot/imported/fireball.png-b282c4f42541839de3ceec2392a7c0d3.s3tc.ctex"
+path.s3tc="res://.godot/imported/fireball.png-78084af2d854a9ed3c654887a7a5e1f8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/effects/fireball.png"
-dest_files=["res://.godot/imported/fireball.png-b282c4f42541839de3ceec2392a7c0d3.s3tc.ctex"]
+source_file="res://Assets/effects/fireball/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-78084af2d854a9ed3c654887a7a5e1f8.s3tc.ctex"]
 
 [params]
 
