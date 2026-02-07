@@ -1,0 +1,16 @@
+Jack: Who are you?
+- Just passing by.
+	Jack: Don't bullshit me.
+- I am Charles. Who are you?
+	Jack: I am Jack. Maybe you could help.
+	- Maybe. Depends on what needs to be done.
+		Jack: There's a monster behind my house. I need it gone.
+		- Consider it done.
+			Jack: If you do it, I will give you some ammo.
+			- Thanks. I will be back.
+		- I don't think so. Your problem.
+			label bye
+			Jack: Bye then.
+			- Bye
+	- Not interested. Bye.
+		jump bye

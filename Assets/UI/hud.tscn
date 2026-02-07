@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://4dh3yiav5t7o"]
+
+[ext_resource type="Script" uid="uid://b01r1j7pvaapm" path="res://Scripts/hud.gd" id="1_uaf6y"]
+[ext_resource type="Script" uid="uid://ddvdo86im4ddo" path="res://Scripts/crosshair_manager.gd" id="2_xgg6n"]
+[ext_resource type="Texture2D" uid="uid://b6x53jkb54tif" path="res://Assets/crosshairs/aim.png" id="3_ht4v2"]
+
+[node name="HUD" type="Control" unique_id=1922200291]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrosshairLayer" type="CanvasLayer" parent="." unique_id=1140195177]
+layer = 10
+script = ExtResource("2_xgg6n")
+crosshair_textures = Array[Texture2D]([ExtResource("3_ht4v2")])
+
+[node name="CenterContainer" type="CenterContainer" parent="CrosshairLayer" unique_id=1765194501]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="CrosshairLayer/CenterContainer" unique_id=752149052]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="HealthAmmoLayer" type="CanvasLayer" parent="." unique_id=1740891204]
+script = ExtResource("1_uaf6y")
+
+[node name="MarginContainer" type="MarginContainer" parent="HealthAmmoLayer" unique_id=1881336808]
+custom_minimum_size = Vector2(0, 60)
+offset_right = 190.0
+offset_bottom = 60.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HealthAmmoLayer/MarginContainer" unique_id=1792824331]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="HealthAmmoLayer/MarginContainer/HBoxContainer" unique_id=1755560483]
+layout_mode = 2
+text = "HEALTH: 100"
+
+[node name="VSeparator" type="VSeparator" parent="HealthAmmoLayer/MarginContainer/HBoxContainer" unique_id=2143991465]
+layout_mode = 2
+
+[node name="AmmoLabel" type="Label" parent="HealthAmmoLayer/MarginContainer/HBoxContainer" unique_id=801744713]
+layout_mode = 2
+text = "AMMO: 50"

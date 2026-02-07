@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SproutyDialogsCharacterData" format=3 uid="uid://civrkead8afau"]
+
+[ext_resource type="Script" uid="uid://kwoapf8il7ee" path="res://addons/sprouty_dialogs/resources/character_data.gd" id="1_lsfxk"]
+
+[resource]
+script = ExtResource("1_lsfxk")
+key_name = "Jack"
+display_name = {
+"default": "Jack",
+"en": ""
+}

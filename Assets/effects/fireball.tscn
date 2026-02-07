@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dao4f1kd1jw5w"]
+
+[ext_resource type="Texture2D" uid="uid://cci2c4vsdbsap" path="res://Assets/effects/fireball.png" id="1_ny7j1"]
+[ext_resource type="Script" uid="uid://dx48m485uk71c" path="res://Assets/effects/fireball.gd" id="1_ssd4i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ssd4i"]
+radius = 0.25138128
+
+[node name="Fireball" type="Area3D" unique_id=105003585]
+script = ExtResource("1_ssd4i")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1027611474]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_ny7j1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=665766811]
+light_color = Color(0.83137256, 0.019607844, 0, 1)
+light_energy = 5.015
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=248997989]
+shape = SubResource("SphereShape3D_ssd4i")
