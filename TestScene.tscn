@@ -181,7 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraPivot" unique_id=444751328]
 current = true
-fov = 90.0
+fov = 85.0
 
 [node name="WeaponSprite" type="Sprite3D" parent="Player/CameraPivot/Camera3D" unique_id=1529461191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52985954, -0.83171034, -1.1326036)
@@ -227,17 +227,17 @@ shadow_enabled = true
 [node name="OmniLight3D" type="OmniLight3D" parent="Level/Lighting" unique_id=1141344108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3155746, 6.082991, -2.7298708)
 light_color = Color(0.99825495, 0.91070527, 0.8085295, 1)
-light_energy = 0.955
-light_indirect_energy = 3.56
-light_volumetric_fog_energy = 7.75
+light_energy = 0.771
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 1.405
 omni_range = 13.345
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Level/Lighting" unique_id=739144367]
-transform = Transform3D(-1, 2.990035e-08, -8.2150535e-08, 0, 0.9396926, 0.34202012, 8.742278e-08, 0.34202012, -0.9396926, -21.735146, 3.7664056, -15.815847)
+transform = Transform3D(-1, 8.742278e-08, -1.0425061e-15, 0, 1.1924881e-08, 1, 8.742278e-08, 1, -1.1924881e-08, -23.269928, 4.5937567, -9.406695)
 light_color = Color(0.97065693, 0.8468927, 0.81372947, 1)
 light_energy = 10.575
-spot_range = 44.09
-spot_angle = 29.13
+spot_range = 15.534611
+spot_angle = 70.2581
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Level" unique_id=196472104]
 navigation_mesh = SubResource("NavigationMesh_rxm5d")
@@ -245,7 +245,7 @@ navigation_mesh = SubResource("NavigationMesh_rxm5d")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level/NavigationRegion3D" unique_id=13726928]
 environment = SubResource("Environment_lc3a7")
 
-[node name="Level" parent="Level/NavigationRegion3D" unique_id=811472395 instance=ExtResource("3_sreuk")]
+[node name="Level" parent="Level/NavigationRegion3D" unique_id=2032354569 instance=ExtResource("3_sreuk")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 1.2428379, -1.3187115, 2.523944)
 
 [node name="Imp" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1620173614]
@@ -271,6 +271,56 @@ shape = SubResource("CylinderShape3D_b3dy1")
 path_desired_distance = 1.5
 
 [node name="RayCast3D" type="RayCast3D" parent="Level/NavigationRegion3D/Imp" unique_id=1076077490]
+target_position = Vector3(0, -1, -50)
+
+[node name="Imp3" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1711566003]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -17.585196, 9.536743e-07, -33.09224)
+script = ExtResource("9_rxm5d")
+fireball_scene = ExtResource("9_exllb")
+attack_range = 7.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/NavigationRegion3D/Imp3" unique_id=127489922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_c8rvf")
+animation = &"attack"
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Imp3" unique_id=1049012312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54126257, 0)
+shape = SubResource("CylinderShape3D_b3dy1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Level/NavigationRegion3D/Imp3" unique_id=440371524]
+path_desired_distance = 1.5
+
+[node name="RayCast3D" type="RayCast3D" parent="Level/NavigationRegion3D/Imp3" unique_id=1434333790]
+target_position = Vector3(0, -1, -50)
+
+[node name="Imp4" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=2089546748]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14.926271, 9.536743e-07, -43.466606)
+script = ExtResource("9_rxm5d")
+fireball_scene = ExtResource("9_exllb")
+attack_range = 7.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/NavigationRegion3D/Imp4" unique_id=598030359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_c8rvf")
+animation = &"attack"
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Imp4" unique_id=1560377070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54126257, 0)
+shape = SubResource("CylinderShape3D_b3dy1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Level/NavigationRegion3D/Imp4" unique_id=1134439283]
+path_desired_distance = 1.5
+
+[node name="RayCast3D" type="RayCast3D" parent="Level/NavigationRegion3D/Imp4" unique_id=717145138]
 target_position = Vector3(0, -1, -50)
 
 [node name="Jack" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1300319343]

@@ -7,9 +7,9 @@ class_name Shotgun
 @export var pellet_count := 8			# Number of pellets per shot
 @export var pellet_spread := 6.0		# degrees
 @export var pellet_range := 100.0		# max distance pellets can hit
-@export var fire_rate := 0.1			# seconds between shots; default 0.9
+@export var fire_rate := 0.6			# seconds between shots; default 0.9
 @export var damage_per_pellet := 4		# damage per pellet; default 6
-@export var recoil_kick := 6.0			# degrees
+@export var recoil_kick := 2.2			# degrees
 @export var recoil_return := 18.0		# return speed
 
 # --------------------

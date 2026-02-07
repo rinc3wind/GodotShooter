@@ -10,7 +10,7 @@ extends CharacterBody3D
 @export var acceleration := 70.0
 @export var friction := 50.0
 @export var gravity := 30.0
-@export var jump_force := 9.0
+@export var jump_force := 11.0
 
 # --------------------
 # Mouse look
