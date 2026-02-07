@@ -1,16 +1,33 @@
-Jack: Who are you?
-- Just passing by.
-	Jack: Don't bullshit me.
-- I am Charles. Who are you?
-	Jack: I am Jack. Maybe you could help.
-	- Maybe. Depends on what needs to be done.
-		Jack: There's a monster behind my house. I need it gone.
-		- Consider it done.
-			Jack: If you do it, I will give you some ammo.
-			- Thanks. I will be back.
-		- I don't think so. Your problem.
-			label bye
-			Jack: Bye then.
-			- Bye
-	- Not interested. Bye.
+if {Jack_s_quest.completed} == false and {Jack_s_quest.active} == false:
+	Jack: Who are you?
+	- Just passing by.
+		Jack: Don't bullshit me.
+		- Whatever.
+			jump bye
+	- I am Charles. Who are you?
+		Jack: I am Jack. Maybe you could help.
+		- Maybe. Depends on what needs to be done.
+			Jack: There's a monster behind my house. I need it gone.
+			- Consider it done.
+				set {Jack_s_quest.active} = true
+				Jack: If you do it, I will give you some ammo.
+				- Thanks. I will be back.
+			- I don't think so. Your problem.
+				label bye
+				Jack: Bye then.
+				- Bye
+		- Not interested. Bye.
+			jump bye
+elif {Jack_s_quest.completed} == true:
+	Jack: Thank you very much! Here's some ammo.
+	- My pleasure.
+		jump bye
+	- Fuck you.
+		jump bye
+elif {Jack_s_quest.completed} == false and {Jack_s_quest.active} == true:
+	Jack: Still working on that pesky imp?
+	- Yeah. Be right back.
+		jump bye
+	- Actually I don't give a fuck.
+		set {Jack_s_quest.active} = false
 		jump bye

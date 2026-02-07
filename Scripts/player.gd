@@ -33,6 +33,7 @@ extends CharacterBody3D
 @onready var collision := $CollisionShape3D
 @onready var weapon_manager := $WeaponManager
 @onready var flashlight := $CameraPivot/Camera3D/Flashlight
+@onready var interaction_manager := $InteractionManager
 
 # --------------------
 # Stats
@@ -41,10 +42,15 @@ extends CharacterBody3D
 
 var is_crouching := false
 var look_angle := 0.0
+var is_in_dialogue := false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	# Setup interaction manager
+	if interaction_manager:
+		interaction_manager.setup(camera, self)
+		
 	# Give weapon manager access to camera
 	if weapon_manager:
 		weapon_manager.setup(camera)
@@ -60,6 +66,8 @@ func _unhandled_input(event):
 # Mouse look
 # --------------------
 func handle_mouse_look(event: InputEventMouseMotion):
+	if is_in_dialogue: return
+	
 	rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 
 	look_angle = clamp(
@@ -72,6 +80,8 @@ func handle_mouse_look(event: InputEventMouseMotion):
 # Main physics loop
 # --------------------
 func _physics_process(delta):
+	if is_in_dialogue: return
+	
 	handle_crouch(delta)
 	handle_movement(delta)
 	handle_jump()

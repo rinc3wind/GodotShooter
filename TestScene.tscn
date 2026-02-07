@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://d1byehse3avo5" path="res://Textures/Untitled.blend" id="3_sreuk"]
 [ext_resource type="Script" uid="uid://dt7ypqybx5mys" path="res://Scripts/shotgun.gd" id="4_5uqhi"]
 [ext_resource type="Texture2D" uid="uid://dlhmm3oo0c54s" path="res://Assets/weapons/shotgun_fire.png" id="6_12c36"]
+[ext_resource type="Script" uid="uid://ryvfmyypw1a0" path="res://Scripts/interaction_manager.gd" id="7_c8rvf"]
 [ext_resource type="PackedScene" uid="uid://4dh3yiav5t7o" path="res://Assets/UI/hud.tscn" id="8_exllb"]
 [ext_resource type="Texture2D" uid="uid://j4bkqoy8w6x8" path="res://Assets/enemies/imp_whole.png" id="8_rxm5d"]
 [ext_resource type="Texture2D" uid="uid://b7t7b7tx40wds" path="res://Assets/enemies/imp.png" id="9_b3dy1"]
 [ext_resource type="PackedScene" uid="uid://dao4f1kd1jw5w" path="res://Assets/effects/fireball/fireball.tscn" id="9_exllb"]
 [ext_resource type="Script" uid="uid://fs5nff8j0pr4" path="res://Scripts/imp.gd" id="9_rxm5d"]
 [ext_resource type="Texture2D" uid="uid://cjlrn2lon7ocv" path="res://Assets/NPCs/Jack.png" id="11_7tcvf"]
+[ext_resource type="Script" uid="uid://bbbxh6x33uifx" path="res://Scripts/npc.gd" id="13_as4v2"]
 [ext_resource type="Texture2D" uid="uid://cncjrn5kxjr05" path="res://Assets/objects/tree.png" id="13_lc3a7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
@@ -209,6 +211,9 @@ script = ExtResource("4_5uqhi")
 idle_texture = ExtResource("2_12c36")
 fire_texture = ExtResource("6_12c36")
 
+[node name="InteractionManager" type="Node" parent="Player" unique_id=1469250180]
+script = ExtResource("7_c8rvf")
+
 [node name="Level" type="Node" parent="." unique_id=902889367]
 
 [node name="Lighting" type="Node" parent="Level" unique_id=36850179]
@@ -240,7 +245,7 @@ navigation_mesh = SubResource("NavigationMesh_rxm5d")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level/NavigationRegion3D" unique_id=13726928]
 environment = SubResource("Environment_lc3a7")
 
-[node name="Level" parent="Level/NavigationRegion3D" unique_id=1644994175 instance=ExtResource("3_sreuk")]
+[node name="Level" parent="Level/NavigationRegion3D" unique_id=811472395 instance=ExtResource("3_sreuk")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 1.2428379, -1.3187115, 2.523944)
 
 [node name="Imp" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1620173614]
@@ -270,6 +275,8 @@ target_position = Vector3(0, -1, -50)
 
 [node name="Jack" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1300319343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6022918, 0.17995274, 0)
+script = ExtResource("13_as4v2")
+timeline = "Jack_timeline"
 
 [node name="Sprite3D" type="Sprite3D" parent="Level/NavigationRegion3D/Jack" unique_id=2097690849]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.9940871, 0)

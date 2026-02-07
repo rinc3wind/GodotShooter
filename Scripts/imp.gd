@@ -56,3 +56,4 @@ func on_damaged(damage: int, _hit_position: Vector3):
 
 func on_death():
 	super.on_death()
+	Dialogic.VAR.Jack_s_quest.completed = true
