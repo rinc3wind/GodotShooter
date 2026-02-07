@@ -27,12 +27,13 @@ directories/dtl_directory={
 "Jack_timeline": "res://Assets/NPCs/Jack_timeline.dtl"
 }
 layout/style_directory={
-"": "res://Assets/UI/DialogueUI.tres",
-"DialogueUI": "res://Assets/UI/DialogueUI.tres"
+"": "res://Assets/UI/Dialogic/Default.tres",
+"Custom": "res://Assets/UI/Dialogic/Custom.tres",
+"Default": "res://Assets/UI/Dialogic/Default.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://Assets/UI/DialogueUI.tres"]
-layout/default_style="res://Assets/UI/DialogueUI.tres"
+layout/style_list=["res://Assets/UI/Dialogic/Custom.tres", "res://Assets/UI/Dialogic/Default.tres"]
+layout/default_style="res://Assets/UI/Dialogic/Default.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01

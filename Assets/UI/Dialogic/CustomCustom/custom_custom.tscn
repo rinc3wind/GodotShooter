@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bydh1jpg28y0h"]
+
+[ext_resource type="Script" uid="uid://co7m5hfngcpfh" path="res://Assets/UI/Dialogic/CustomCustom/default_layout_base.gd" id="1_ifsho"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="2_xubad"]
+[ext_resource type="PackedScene" uid="uid://by6waso0mjpjp" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/textbox_with_speaker_portrait.tscn" id="4_t7baa"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="6_0oa81"]
+
+[node name="Custom" type="CanvasLayer" unique_id=400679447]
+script = ExtResource("1_ifsho")
+
+[node name="FullAdvanceInputLayer" parent="." unique_id=640427403 instance=ExtResource("2_xubad")]
+apply_overrides_on_ready = true
+
+[node name="TextboxWithSpeakerPortrait" parent="." unique_id=764099308 instance=ExtResource("4_t7baa")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+apply_overrides_on_ready = true
+
+[node name="VN_ChoiceLayer" parent="." unique_id=1874232452 instance=ExtResource("6_0oa81")]
+offset_left = -314.0
+apply_overrides_on_ready = true

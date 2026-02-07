@@ -282,8 +282,115 @@ texture = ExtResource("11_7tcvf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0303955, 0)
 shape = SubResource("CylinderShape3D_rxm5d")
 
-[node name="Sprite3D" type="Sprite3D" parent="Level/NavigationRegion3D" unique_id=538798814]
+[node name="Trees" type="Node" parent="Level/NavigationRegion3D" unique_id=2037707871]
+
+[node name="Tree" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=538798814]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -11.885376, 4.254668, -6.884413)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree2" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=754232439]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -6.2121115, 4.254668, -20.89753)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree3" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=2012686470]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 11.519662, 4.254668, -15.74687)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree4" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=872073635]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 27.64714, 4.254668, -7.4720383)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree5" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=737213390]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 32.7978, 4.254668, 3.4203415)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree6" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=401471038]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 14.221649, 4.254668, 13.215039)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree7" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=528090364]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -9.336288, 4.254668, 15.748153)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree8" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1473584287]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -43.25061, 4.254668, 7.621215)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree9" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=2040626625]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -45.404472, 4.254668, -3.631465)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree10" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1040969663]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -51.310745, 4.254668, 0.51889086)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree11" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=2036686065]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -52.21531, 4.254668, -8.473547)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree12" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=812849345]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -58.121582, 4.254668, -4.3231907)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree13" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1290758217]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -53.51229, 4.254668, 6.6480856)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree14" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=384757291]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -59.418564, 4.254668, 10.798441)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree15" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1162092951]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -60.323128, 4.254668, 1.8060036)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
+
+[node name="Tree16" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1407585953]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -66.2294, 4.254668, 5.95636)
 billboard = 2
 shaded = true
 texture_filter = 0

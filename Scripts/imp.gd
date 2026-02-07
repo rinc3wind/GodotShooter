@@ -8,7 +8,7 @@ func _ready():
 	max_health = 60
 	speed = 10.0
 	attack_range = 20.0
-	detection_range = 200.0
+	detection_range = 80.0
 	
 	# Call parent ready
 	super._ready()
