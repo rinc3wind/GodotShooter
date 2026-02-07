@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dao4f1kd1jw5w" path="res://Assets/effects/fireball/fireball.tscn" id="9_exllb"]
 [ext_resource type="Script" uid="uid://fs5nff8j0pr4" path="res://Scripts/imp.gd" id="9_rxm5d"]
 [ext_resource type="Texture2D" uid="uid://cjlrn2lon7ocv" path="res://Assets/NPCs/Jack.png" id="11_7tcvf"]
+[ext_resource type="Texture2D" uid="uid://cncjrn5kxjr05" path="res://Assets/objects/tree.png" id="13_lc3a7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 
@@ -280,3 +281,10 @@ texture = ExtResource("11_7tcvf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Jack" unique_id=348355120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0303955, 0)
 shape = SubResource("CylinderShape3D_rxm5d")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/NavigationRegion3D" unique_id=538798814]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -11.885376, 4.254668, -6.884413)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_lc3a7")
