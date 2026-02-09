@@ -7,76 +7,116 @@ class_name Shotgun
 @export var pellet_count := 8			# Number of pellets per shot
 @export var pellet_spread := 6.0		# degrees
 @export var pellet_range := 100.0		# max distance pellets can hit
-@export var fire_rate := 0.6			# seconds between shots; default 0.9
+@export var fire_rate := 0.2			# seconds between shots; default 0.9
 @export var damage_per_pellet := 4		# damage per pellet; default 6
 @export var recoil_kick := 2.2			# degrees
 @export var recoil_return := 18.0		# return speed
 
 # --------------------
-# Sprite settings
+# Animation settings
 # --------------------
-@export var idle_texture: Texture2D
-@export var fire_texture: Texture2D
-@export var fire_animation_time := 0.1  # How long to show fire sprite
+@export var shoot_animation := "shoot"
+@export var reload_animation := "reload"
+@export var idle_animation := "idle"
 
-@onready var sprite: Sprite3D
+@onready var sprite: AnimatedSprite3D
 
 var fire_cooldown := 0.0
-var fire_animation_timer := 0.0
+var is_reloading := false
 
 func setup(cam: Camera3D):
 	super.setup(cam)  # Call parent setup
 	# Find sprite as child of camera
 	sprite = cam.get_node_or_null("WeaponSprite")
-	if sprite and idle_texture:
-		sprite.texture = idle_texture
+	if sprite:
+		sprite.animation_finished.connect(_on_animation_finished)
+		sprite.play(idle_animation)
 
 func _ready():
-	# Make sure sprite exists
-	if sprite and idle_texture:
-		sprite.texture = idle_texture
-
+	# Initialize ammo
 	max_ammo = 50
 	clip_size = 2
 	current_ammo = 36
 	ammo_in_clip = 2
+	
+	# Make sure sprite exists and play idle
+	if sprite:
+		sprite.play(idle_animation)
 
 func process_weapon(delta: float):
 	# Tick down cooldown
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
 
-	# Handle fire animation
-	if fire_animation_timer > 0:
-		fire_animation_timer -= delta
-		if fire_animation_timer <= 0 and sprite and idle_texture:
-			sprite.texture = idle_texture
-
 	# Apply recoil recovery
 	apply_recoil(delta, recoil_return)
 
+	# Don't allow actions during reload
+	if is_reloading:
+		return
+
 	# Handle firing
-	if Input.is_action_pressed("fire") and fire_cooldown <= 0: fire()
-	if Input.is_action_just_released("reload"): super.reload()
+	if Input.is_action_pressed("fire") and fire_cooldown <= 0:
+		fire()
+	
+	# Handle reloading
+	if Input.is_action_just_pressed("reload"):
+		start_reload()
 
 func fire():
-	if not camera: return
-	if ammo_in_clip <= 0: return
+	if not camera:
+		return
+	
+	if ammo_in_clip <= 0:
+		# Auto-reload if out of ammo
+		start_reload()
+		return
 
 	fire_cooldown = fire_rate
 	recoil_offset -= recoil_kick
 
-	# Show fire sprite
-	if sprite and fire_texture:
-		sprite.texture = fire_texture
-		fire_animation_timer = fire_animation_time
+	# Play shoot animation
+	if sprite:
+		sprite.play(shoot_animation)
 
 	var space_state := get_world_3d().direct_space_state
 
 	for i in pellet_count:
 		fire_pellet(space_state)
 
-	super.fire()  # Call parent fire
+	super.fire()  # Call parent fire (decrements ammo)
+
+func start_reload():
+	# Don't reload if already reloading or clip is full or no reserve ammo
+	if is_reloading:
+		return
+	if ammo_in_clip >= clip_size:
+		return
+	if current_ammo <= 0:
+		return
+	
+	is_reloading = true
+	
+	# Play reload animation
+	if sprite:
+		sprite.play(reload_animation)
+	
+	# The actual reload logic will happen when animation finishes
+
+func _on_animation_finished():
+	if not sprite:
+		return
+	
+	# Check which animation just finished
+	if sprite.animation == shoot_animation:
+		# Return to idle after shooting
+		sprite.play(idle_animation)
+	
+	elif sprite.animation == reload_animation:
+		# Complete the reload
+		super.reload()
+		is_reloading = false
+		sprite.play(idle_animation)
 
 func fire_pellet(space_state: PhysicsDirectSpaceState3D):
 	# Random spread
@@ -103,10 +143,9 @@ func fire_pellet(space_state: PhysicsDirectSpaceState3D):
 		handle_hit(result)
 
 func handle_hit(result: Dictionary):
-	#print("Hit: ", result.collider.name)
 	create_bullet_hole(result)
 
-	# TODO: Apply damage
+	# Apply damage
 	if result.collider.has_method("take_damage"):
 		result.collider.take_damage(damage_per_pellet)
 
