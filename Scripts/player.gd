@@ -45,6 +45,7 @@ var look_angle := 0.0
 var is_in_dialogue := false
 
 func _ready():
+	GameManager.set_player(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	# Setup interaction manager

@@ -34,7 +34,7 @@ var is_playing_damage_animation := false
 # --------------------
 func _ready():
 	current_health = max_health
-	player = get_tree().current_scene.get_node_or_null("Player")
+	player = GameManager.get_player()
 	
 	# Wait for NavigationServer to sync
 	await get_tree().physics_frame

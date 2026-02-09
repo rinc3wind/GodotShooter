@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+GameManager="*uid://cp2wkew3v17ld"
 
 [dialogic]
 

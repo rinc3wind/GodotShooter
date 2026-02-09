@@ -9,8 +9,7 @@ class_name HUD
 var player: CharacterBody3D
 
 func _ready():
-	# Find player
-	player = get_tree().current_scene.get_node_or_null("Player")
+	player = GameManager.get_player()
 
 func _process(_delta):
 	if player:

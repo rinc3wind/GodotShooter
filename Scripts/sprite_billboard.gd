@@ -5,8 +5,8 @@ extends Sprite3D
 var player: Node3D
 
 func _ready():
-	# Find player
-	player = get_tree().current_scene.get_node_or_null("Player")
+	# Get player reference from singleton (fast!)
+	player = GameManager.get_player()
 	
 	if not player:
 		push_warning("Player not found for sprite billboard")
