@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://cskbrm3t84ltt"]
+
+[ext_resource type="Script" uid="uid://fs5nff8j0pr4" path="res://Scripts/imp.gd" id="1_xaiu2"]
+[ext_resource type="PackedScene" uid="uid://dao4f1kd1jw5w" path="res://Assets/effects/fireball/fireball.tscn" id="2_k7eit"]
+[ext_resource type="Texture2D" uid="uid://j4bkqoy8w6x8" path="res://Assets/enemies/imp_whole.png" id="3_774xs"]
+[ext_resource type="Texture2D" uid="uid://b7t7b7tx40wds" path="res://Assets/enemies/imp.png" id="4_5o1b0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5py1"]
+atlas = ExtResource("3_774xs")
+region = Rect2(324, 0, 81, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asirl"]
+atlas = ExtResource("3_774xs")
+region = Rect2(405, 0, 81, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iisml"]
+atlas = ExtResource("3_774xs")
+region = Rect2(486, 0, 81, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8rvf"]
+atlas = ExtResource("3_774xs")
+region = Rect2(8, 522, 83, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as4v2"]
+atlas = ExtResource("3_774xs")
+region = Rect2(8, 625, 83, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr5jl"]
+atlas = ExtResource("3_774xs")
+region = Rect2(91, 625, 83, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i67pj"]
+atlas = ExtResource("3_774xs")
+region = Rect2(174, 625, 83, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpw16"]
+atlas = ExtResource("3_774xs")
+region = Rect2(257, 625, 83, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bg8d"]
+atlas = ExtResource("3_774xs")
+region = Rect2(340, 625, 83, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxm5d"]
+atlas = ExtResource("4_5o1b0")
+region = Rect2(3, 0, 75, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tcvf"]
+atlas = ExtResource("4_5o1b0")
+region = Rect2(78, 0, 75, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exllb"]
+atlas = ExtResource("4_5o1b0")
+region = Rect2(153, 0, 75, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc3a7"]
+atlas = ExtResource("4_5o1b0")
+region = Rect2(228, 0, 75, 116)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8rvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5py1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asirl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iisml")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8rvf")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as4v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr5jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i67pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpw16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bg8d")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxm5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tcvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exllb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc3a7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3dy1"]
+height = 0.95321655
+radius = 0.35546875
+
+[node name="Imp" type="CharacterBody3D" unique_id=2001469885]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+script = ExtResource("1_xaiu2")
+fireball_scene = ExtResource("2_k7eit")
+attack_range = 7.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1576687857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_c8rvf")
+animation = &"attack"
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=548127578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54126257, 0)
+shape = SubResource("CylinderShape3D_b3dy1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1806530152]
+path_desired_distance = 1.5
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=484427881]
+target_position = Vector3(0, -1, -50)

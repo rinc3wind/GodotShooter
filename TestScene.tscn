@@ -8,17 +8,44 @@
 [ext_resource type="Texture2D" uid="uid://dlhmm3oo0c54s" path="res://Assets/weapons/shotgun_fire.png" id="6_12c36"]
 [ext_resource type="Script" uid="uid://ryvfmyypw1a0" path="res://Scripts/interaction_manager.gd" id="7_c8rvf"]
 [ext_resource type="PackedScene" uid="uid://4dh3yiav5t7o" path="res://Assets/UI/hud.tscn" id="8_exllb"]
-[ext_resource type="Texture2D" uid="uid://j4bkqoy8w6x8" path="res://Assets/enemies/imp_whole.png" id="8_rxm5d"]
-[ext_resource type="Texture2D" uid="uid://b7t7b7tx40wds" path="res://Assets/enemies/imp.png" id="9_b3dy1"]
-[ext_resource type="PackedScene" uid="uid://dao4f1kd1jw5w" path="res://Assets/effects/fireball/fireball.tscn" id="9_exllb"]
-[ext_resource type="Script" uid="uid://fs5nff8j0pr4" path="res://Scripts/imp.gd" id="9_rxm5d"]
+[ext_resource type="PackedScene" uid="uid://cskbrm3t84ltt" path="res://Assets/enemies/imp.tscn" id="9_exllb"]
 [ext_resource type="Texture2D" uid="uid://cjlrn2lon7ocv" path="res://Assets/NPCs/Jack.png" id="11_7tcvf"]
 [ext_resource type="Script" uid="uid://bbbxh6x33uifx" path="res://Scripts/npc.gd" id="13_as4v2"]
+[ext_resource type="Script" uid="uid://dylhyikumdyij" path="res://Scripts/sprite_billboard.gd" id="13_c8rvf"]
 [ext_resource type="Texture2D" uid="uid://cncjrn5kxjr05" path="res://Assets/objects/tree.png" id="13_lc3a7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7tcvf"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_as4v2"]
+emission_shape = 3
+emission_box_extents = Vector3(9.565, 7.515, 16.135)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+color = Color(0.57, 0.57, 0.57, 0.5647059)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_as4v2"]
+_limits = [0.0, 0.029782955, 0.0, 1.0]
+_data = [Vector2(0.070336394, 0.008623205), 0.0, 0.0, 0, 0, Vector2(0.6666667, 0.023408677), 0.0, 0.0, 0, 0, Vector2(1, 0.006372165), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr5jl"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_sr5jl"]
+material = SubResource("StandardMaterial3D_sr5jl")
+section_segments = 2
+curve = SubResource("Curve_as4v2")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_rxm5d"]
 vertices = PackedVector3Array(-340.5972, 0.6812887, -26.571106, -23.347198, 0.6812887, -26.321106, -23.347198, 0.6812887, -27.571106, -23.597198, 0.6812887, -574.3211, -340.5972, 0.6812887, -574.3211, -18.597198, 0.6812887, -28.071106, -18.347198, 0.6812887, -26.071106, -17.347198, 0.6812887, -26.071106, -17.097198, 0.6812887, -28.071106, -14.8471985, 0.6812887, -28.071106, -9.8471985, 0.6812887, -574.3211, -14.5971985, 0.6812887, -26.071106, -13.5971985, 0.6812887, -26.071106, -13.3471985, 0.6812887, -28.071106, -23.097198, 0.6812887, -28.071106, -10.3471985, 0.6812887, -28.071106, -10.0971985, 0.6812887, -27.571106, -10.0971985, 0.6812887, -15.321106, -0.3471985, 0.6812887, -11.571106, 18.152802, 0.6812887, -11.571106, 533.40283, 0.6812887, -9.321106, 533.40283, 0.6812887, -574.3211, 18.402802, 0.6812887, -9.321106, -22.347198, 5.1812887, -27.071106, -22.347198, 5.1812887, -15.821106, -11.0971985, 5.1812887, -15.821106, -11.0971985, 5.1812887, -27.071106, -22.097198, 0.6812887, -26.821106, -22.097198, 0.6812887, -16.071106, -19.597198, 0.6812887, -16.071106, -19.597198, 0.6812887, -26.821106, -12.3471985, 0.6812887, -26.821106, -12.3471985, 0.6812887, -16.071106, -11.3471985, 0.6812887, -16.071106, -11.3471985, 0.6812887, -26.821106, -340.5972, 0.6812887, -16.321106, -23.347198, 0.6812887, -16.571106, -17.347198, 0.6812887, -15.071106, -18.347198, 0.6812887, -15.071106, -23.097198, 0.6812887, -14.821106, -23.097198, 0.6812887, 1.928894, -14.8471985, 0.6812887, 1.928894, -14.8471985, 0.6812887, -14.821106, -0.8471985, 0.6812887, -11.321106, -10.3471985, 0.6812887, -14.821106, -13.5971985, 0.6812887, -15.071106, -14.5971985, 0.6812887, 4.678894, -0.8471985, 0.6812887, 4.428894, -23.347198, 0.6812887, 3.678894, -340.5972, 0.6812887, 3.428894, 0.15280151, 8.181289, -10.571106, 0.15280151, 8.181289, 5.178894, 17.402802, 8.181289, 5.178894, 17.402802, 8.181289, -10.571106, 0.4028015, 0.6812887, 4.928894, 6.6528015, 0.6812887, 4.928894, 0.6528015, 0.6812887, 4.428894, 16.902802, 0.6812887, 4.428894, 10.9028015, 0.6812887, 4.928894, 17.152802, 0.6812887, 4.928894, 0.4028015, 0.6812887, -10.321106, 0.9028015, 0.6812887, -10.071106, 16.652802, 0.6812887, -10.071106, 17.152802, 0.6812887, -10.321106, 18.402802, 0.6812887, 3.928894, 533.40283, 0.6812887, 3.928894, 7.9028015, 0.6812887, 4.928894, 9.6528015, 0.6812887, 4.928894, 9.9028015, 0.6812887, 3.428894, 7.6528015, 0.6812887, 3.428894, 15.6528015, 0.6812887, -8.821106, 1.9028015, 0.6812887, -8.821106, 15.6528015, 0.6812887, 3.428894, 1.9028015, 0.6812887, 3.428894, -22.347198, 1.4312887, 2.928894, -22.347198, 1.4312887, 6.428894, -15.5971985, 1.4312887, 6.428894, -15.5971985, 1.4312887, 2.928894, -340.5972, 0.6812887, 10.678894, -23.347198, 0.6812887, 10.428894, 18.152802, 0.6812887, 6.178894, 16.152802, 0.6812887, 6.178894, 16.152802, 0.6812887, 299.6789, 533.40283, 0.6812887, 299.6789, -0.5971985, 0.6812887, 6.178894, -14.5971985, 0.6812887, 11.928894, -16.847198, 0.6812887, 12.178894, -16.847198, 0.6812887, 299.6789, 1.4028015, 0.6812887, 6.178894, 1.4028015, 0.6812887, 299.6789, 9.9028015, 0.6812887, 6.178894, 7.6528015, 0.6812887, 6.178894, 5.6528015, 0.6812887, 299.6789, 11.9028015, 0.6812887, 299.6789, 5.6528015, 0.6812887, 6.178894, 11.9028015, 0.6812887, 6.178894, -22.347198, 2.1812887, 7.428894, -22.347198, 2.1812887, 7.928894, -15.5971985, 2.1812887, 7.928894, -15.5971985, 2.1812887, 7.428894, -22.347198, 2.9312887, 8.928894, -22.347198, 2.9312887, 9.428894, -15.5971985, 2.9312887, 9.428894, -15.5971985, 2.9312887, 8.928894, -21.097198, 0.6812887, 299.6789, -21.097198, 0.6812887, 12.178894, -23.097198, 0.6812887, 12.178894, -340.5972, 0.6812887, 299.6789, -22.347198, 3.6812887, 10.428894, -22.347198, 3.6812887, 11.178894, -15.5971985, 3.6812887, 11.178894, -15.5971985, 3.6812887, 10.428894)
@@ -43,124 +70,6 @@ volumetric_fog_albedo = Color(0.76862746, 1, 1, 1)
 adjustment_brightness = 0.71
 adjustment_contrast = 1.075
 adjustment_saturation = 1.12
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5py1"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(324, 0, 81, 122)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_asirl"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(405, 0, 81, 122)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iisml"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(486, 0, 81, 122)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8rvf"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(8, 522, 83, 103)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_as4v2"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(8, 625, 83, 118)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sr5jl"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(91, 625, 83, 118)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i67pj"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(174, 625, 83, 118)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qpw16"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(257, 625, 83, 118)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8bg8d"]
-atlas = ExtResource("8_rxm5d")
-region = Rect2(340, 625, 83, 118)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxm5d"]
-atlas = ExtResource("9_b3dy1")
-region = Rect2(3, 0, 75, 116)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tcvf"]
-atlas = ExtResource("9_b3dy1")
-region = Rect2(78, 0, 75, 116)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_exllb"]
-atlas = ExtResource("9_b3dy1")
-region = Rect2(153, 0, 75, 116)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lc3a7"]
-atlas = ExtResource("9_b3dy1")
-region = Rect2(228, 0, 75, 116)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c8rvf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f5py1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_asirl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iisml")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8rvf")
-}],
-"loop": false,
-"name": &"damaged",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_as4v2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sr5jl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i67pj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qpw16")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8bg8d")
-}],
-"loop": false,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rxm5d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7tcvf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_exllb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lc3a7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3dy1"]
-height = 0.95321655
-radius = 0.35546875
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rxm5d"]
 height = 3.911377
@@ -214,6 +123,17 @@ fire_texture = ExtResource("6_12c36")
 [node name="InteractionManager" type="Node" parent="Player" unique_id=1469250180]
 script = ExtResource("7_c8rvf")
 
+[node name="Rain" type="GPUParticles3D" parent="Player" unique_id=1605756410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7809343, 0)
+amount = 500
+lifetime = 2.0
+randomness = 0.51
+visibility_aabb = AABB(-10, -10, -10, 20, 20, 20)
+trail_enabled = true
+trail_lifetime = 0.08
+process_material = SubResource("ParticleProcessMaterial_as4v2")
+draw_pass_1 = SubResource("RibbonTrailMesh_sr5jl")
+
 [node name="Level" type="Node" parent="." unique_id=902889367]
 
 [node name="Lighting" type="Node" parent="Level" unique_id=36850179]
@@ -248,80 +168,8 @@ environment = SubResource("Environment_lc3a7")
 [node name="Level" parent="Level/NavigationRegion3D" unique_id=2032354569 instance=ExtResource("3_sreuk")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 1.2428379, -1.3187115, 2.523944)
 
-[node name="Imp" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1620173614]
+[node name="Imp" parent="Level/NavigationRegion3D" unique_id=2001469885 instance=ExtResource("9_exllb")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14.0377035, 9.536743e-07, -21.773472)
-script = ExtResource("9_rxm5d")
-fireball_scene = ExtResource("9_exllb")
-attack_range = 7.0
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/NavigationRegion3D/Imp" unique_id=1336697945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565, 0)
-billboard = 2
-shaded = true
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_c8rvf")
-animation = &"attack"
-autoplay = "default"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Imp" unique_id=1715047757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54126257, 0)
-shape = SubResource("CylinderShape3D_b3dy1")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Level/NavigationRegion3D/Imp" unique_id=1219797085]
-path_desired_distance = 1.5
-
-[node name="RayCast3D" type="RayCast3D" parent="Level/NavigationRegion3D/Imp" unique_id=1076077490]
-target_position = Vector3(0, -1, -50)
-
-[node name="Imp3" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1711566003]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -17.585196, 9.536743e-07, -33.09224)
-script = ExtResource("9_rxm5d")
-fireball_scene = ExtResource("9_exllb")
-attack_range = 7.0
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/NavigationRegion3D/Imp3" unique_id=127489922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565, 0)
-billboard = 2
-shaded = true
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_c8rvf")
-animation = &"attack"
-autoplay = "default"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Imp3" unique_id=1049012312]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54126257, 0)
-shape = SubResource("CylinderShape3D_b3dy1")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Level/NavigationRegion3D/Imp3" unique_id=440371524]
-path_desired_distance = 1.5
-
-[node name="RayCast3D" type="RayCast3D" parent="Level/NavigationRegion3D/Imp3" unique_id=1434333790]
-target_position = Vector3(0, -1, -50)
-
-[node name="Imp4" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=2089546748]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14.926271, 9.536743e-07, -43.466606)
-script = ExtResource("9_rxm5d")
-fireball_scene = ExtResource("9_exllb")
-attack_range = 7.0
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/NavigationRegion3D/Imp4" unique_id=598030359]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565, 0)
-billboard = 2
-shaded = true
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_c8rvf")
-animation = &"attack"
-autoplay = "default"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Imp4" unique_id=1560377070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54126257, 0)
-shape = SubResource("CylinderShape3D_b3dy1")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Level/NavigationRegion3D/Imp4" unique_id=1134439283]
-path_desired_distance = 1.5
-
-[node name="RayCast3D" type="RayCast3D" parent="Level/NavigationRegion3D/Imp4" unique_id=717145138]
-target_position = Vector3(0, -1, -50)
 
 [node name="Jack" type="CharacterBody3D" parent="Level/NavigationRegion3D" unique_id=1300319343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6022918, 0.17995274, 0)
@@ -347,6 +195,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree2" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=754232439]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -6.2121115, 4.254668, -20.89753)
@@ -354,6 +203,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree3" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=2012686470]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 11.519662, 4.254668, -15.74687)
@@ -361,6 +211,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree4" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=872073635]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 27.64714, 4.254668, -7.4720383)
@@ -368,6 +219,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree5" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=737213390]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 32.7978, 4.254668, 3.4203415)
@@ -375,6 +227,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree6" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=401471038]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 14.221649, 4.254668, 13.215039)
@@ -382,6 +235,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree7" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=528090364]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -9.336288, 4.254668, 15.748153)
@@ -389,6 +243,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree8" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1473584287]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -43.25061, 4.254668, 7.621215)
@@ -396,6 +251,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree9" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=2040626625]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -45.404472, 4.254668, -3.631465)
@@ -403,6 +259,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree10" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1040969663]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -51.310745, 4.254668, 0.51889086)
@@ -410,6 +267,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree11" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=2036686065]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -52.21531, 4.254668, -8.473547)
@@ -417,6 +275,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree12" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=812849345]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -58.121582, 4.254668, -4.3231907)
@@ -424,6 +283,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree13" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1290758217]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -53.51229, 4.254668, 6.6480856)
@@ -431,6 +291,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree14" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=384757291]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -59.418564, 4.254668, 10.798441)
@@ -438,6 +299,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree15" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1162092951]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -60.323128, 4.254668, 1.8060036)
@@ -445,6 +307,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
 
 [node name="Tree16" type="Sprite3D" parent="Level/NavigationRegion3D/Trees" unique_id=1407585953]
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, -66.2294, 4.254668, 5.95636)
@@ -452,3 +315,4 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("13_lc3a7")
+script = ExtResource("13_c8rvf")
