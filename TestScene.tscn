@@ -98,6 +98,7 @@ shaded = true
 double_sided = false
 no_depth_test = true
 texture_filter = 0
+render_priority = 1
 texture = SubResource("CompressedTexture2D_7tcvf")
 
 [node name="HUD" parent="Player/CameraPivot/Camera3D" unique_id=1922200291 instance=ExtResource("8_exllb")]
@@ -128,6 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7809343, 0)
 amount = 500
 lifetime = 2.0
 randomness = 0.51
+collision_base_size = 0.74
 visibility_aabb = AABB(-10, -10, -10, 20, 20, 20)
 trail_enabled = true
 trail_lifetime = 0.08
@@ -182,6 +184,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("11_7tcvf")
+script = ExtResource("13_c8rvf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Jack" unique_id=348355120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0303955, 0)
