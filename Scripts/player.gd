@@ -24,8 +24,8 @@ extends CharacterBody3D
 # --------------------
 @export var stand_height := 1.6
 @export var crouch_height := 1.0
-@export var crouch_camera_y := -0.6
-@export var stand_camera_y := 0.1
+@export var crouch_camera_y := 0.5  # Camera height when crouching
+@export var stand_camera_y := 1.5   # Camera height when standing
 @export var crouch_lerp_speed := 12.0
 
 @onready var camera_pivot := $CameraPivot
@@ -180,7 +180,12 @@ func handle_crouch(delta):
 	capsule.height = lerp(capsule.height, target_height, crouch_lerp_speed * delta)
 
 	var target_cam_y := crouch_camera_y if is_crouching else stand_camera_y
-	camera.position.y = lerp(camera.position.y, target_cam_y, crouch_lerp_speed * delta)
+	
+	# Move camera pivot instead of camera
+	camera_pivot.position.y = lerp(camera_pivot.position.y, target_cam_y, crouch_lerp_speed * delta)
+	
+	# Keep camera at origin relative to pivot
+	camera.position.y = 0
 
 # Check if there's enough headroom to stand up
 func can_stand_up() -> bool:

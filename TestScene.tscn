@@ -86,7 +86,7 @@ transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_a202f")
 
 [node name="CameraPivot" type="Node3D" parent="Player" unique_id=1530165207]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.905, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraPivot" unique_id=444751328]
 current = true
