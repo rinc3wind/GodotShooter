@@ -6,6 +6,8 @@ var current_weapon: Weapon
 var weapons: Array[Weapon] = []
 
 func _ready():
+	GameManager.set_weapon_manager(self)
+
 	# Collect all weapon children
 	for child in get_children():
 		if child is Weapon:
@@ -24,8 +26,7 @@ func setup(cam: Camera3D):
 		weapon.setup(camera)
 
 func process_input(delta: float):
-	if current_weapon:
-		current_weapon.process_weapon(delta)
+	if current_weapon: current_weapon.process_weapon(delta)
 
 func equip_weapon(index: int):
 	if index < 0 or index >= weapons.size():
@@ -52,3 +53,8 @@ func _input(event):
 		equip_weapon(1)
 	elif event.is_action_pressed("weapon_3"):
 		equip_weapon(2)
+
+func get_current_ammo() -> String:
+	if current_weapon:
+		return str(current_weapon.ammo_in_clip) + '/' + str(current_weapon.current_ammo)
+	return "0/0"

@@ -36,69 +36,76 @@ func _ready():
 	if sprite and idle_texture:
 		sprite.texture = idle_texture
 
+	max_ammo = 50
+	clip_size = 2
+	current_ammo = 36
+	ammo_in_clip = 2
+
 func process_weapon(delta: float):
 	# Tick down cooldown
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
-	
+
 	# Handle fire animation
 	if fire_animation_timer > 0:
 		fire_animation_timer -= delta
 		if fire_animation_timer <= 0 and sprite and idle_texture:
 			sprite.texture = idle_texture
-	
+
 	# Apply recoil recovery
 	apply_recoil(delta, recoil_return)
-	
+
 	# Handle firing
-	if Input.is_action_pressed("fire") and fire_cooldown <= 0:
-		fire()
+	if Input.is_action_pressed("fire") and fire_cooldown <= 0: fire()
+	if Input.is_action_just_released("reload"): super.reload()
 
 func fire():
-	if not camera:
-		return
+	if not camera: return
+	if ammo_in_clip <= 0: return
 
 	fire_cooldown = fire_rate
 	recoil_offset -= recoil_kick
-	
+
 	# Show fire sprite
 	if sprite and fire_texture:
 		sprite.texture = fire_texture
 		fire_animation_timer = fire_animation_time
-	
+
 	var space_state := get_world_3d().direct_space_state
-	
+
 	for i in pellet_count:
 		fire_pellet(space_state)
+
+	super.fire()  # Call parent fire
 
 func fire_pellet(space_state: PhysicsDirectSpaceState3D):
 	# Random spread
 	var spread_x := randf_range(-pellet_spread, pellet_spread)
 	var spread_y := randf_range(-pellet_spread, pellet_spread)
-	
+
 	# Get base direction from camera
 	var direction: Vector3 = -camera.global_transform.basis.z
 	direction = direction.rotated(camera.global_transform.basis.y, deg_to_rad(spread_x))
 	direction = direction.rotated(camera.global_transform.basis.x, deg_to_rad(spread_y))
 	direction = direction.normalized()
-	
+
 	# Raycast
 	var from: Vector3 = camera.global_position
 	var to := from + direction * pellet_range
-	
+
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [get_parent().get_parent()]  # Exclude player
 	query.collide_with_areas = false
-	
+
 	var result := space_state.intersect_ray(query)
-	
+
 	if result:
 		handle_hit(result)
 
 func handle_hit(result: Dictionary):
 	#print("Hit: ", result.collider.name)
 	create_bullet_hole(result)
-	
+
 	# TODO: Apply damage
 	if result.collider.has_method("take_damage"):
 		result.collider.take_damage(damage_per_pellet)
@@ -124,7 +131,7 @@ func create_bullet_hole(result):
 	bitangent = bitangent.rotated(normal, angle)
 	decal.global_transform.basis = Basis(tangent, -normal, bitangent)
 	decal.size = Vector3(0.2, 0.2, 0.2)
-	
+
 	# Destroy decal after 30 seconds
 	await get_tree().create_timer(30).timeout
 	if is_instance_valid(decal): decal.queue_free()

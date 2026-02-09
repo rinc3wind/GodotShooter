@@ -256,3 +256,6 @@ func take_damage(damage: int, _hit_position: Vector3):
 	print("Player took ", damage, " damage! Health now: ", health)
 	if health <= 0:
 		die()
+
+func get_health() -> int:
+	return health

@@ -2,7 +2,7 @@ extends Area3D
 class_name Fireball
 
 @export var speed := 20.0
-@export var damage := 20
+@export var damage := 14
 @export var lifetime := 5.0
 
 var direction := Vector3.ZERO
