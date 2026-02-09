@@ -13,6 +13,13 @@ class_name Shotgun
 @export var recoil_return := 18.0		# return speed
 
 # --------------------
+# Sound effects
+# --------------------
+@export_group("Sound Effects")
+@export var shoot_sound: AudioStream
+@export var reload_sound: AudioStream
+
+# --------------------
 # Animation settings
 # --------------------
 @export var shoot_animation := "shoot"
@@ -84,6 +91,8 @@ func fire():
 	for i in pellet_count:
 		fire_pellet(space_state)
 
+	GameManager.play_sound(shoot_sound)
+
 	super.fire()  # Call parent fire (decrements ammo)
 
 func start_reload():
@@ -96,6 +105,7 @@ func start_reload():
 		return
 	
 	is_reloading = true
+	GameManager.play_sound(reload_sound)
 	
 	# Play reload animation
 	if sprite:

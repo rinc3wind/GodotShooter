@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://isehtbpw8503"]
 
+[ext_resource type="Script" uid="uid://dwu4mwepv5lkq" path="res://Scripts/audio_stream_player_2d.gd" id="1_sr5jl"]
 [ext_resource type="Script" uid="uid://dx0wly52fi5fe" path="res://Scripts/player.gd" id="1_sreuk"]
 [ext_resource type="Texture2D" uid="uid://btp3enxjg1yd1" path="res://Assets/weapons/shotgun_idle.png" id="2_12c36"]
 [ext_resource type="Script" uid="uid://bw3ov0wh5p4v7" path="res://Scripts/weapon_manager.gd" id="2_tq6uv"]
@@ -8,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dlhmm3oo0c54s" path="res://Assets/weapons/shotgun_fire.png" id="6_12c36"]
 [ext_resource type="Script" uid="uid://ryvfmyypw1a0" path="res://Scripts/interaction_manager.gd" id="7_c8rvf"]
 [ext_resource type="PackedScene" uid="uid://4dh3yiav5t7o" path="res://Assets/UI/hud.tscn" id="8_exllb"]
+[ext_resource type="AudioStream" uid="uid://cvi3u10sb6pg3" path="res://Assets/FX/shotgun_fire.wav" id="8_i67pj"]
 [ext_resource type="PackedScene" uid="uid://cskbrm3t84ltt" path="res://Assets/enemies/imp.tscn" id="9_exllb"]
+[ext_resource type="AudioStream" uid="uid://knutvuu6np8u" path="res://Assets/FX/shotgun_reload.wav" id="9_qpw16"]
 [ext_resource type="Texture2D" uid="uid://cjlrn2lon7ocv" path="res://Assets/NPCs/Jack.png" id="11_7tcvf"]
 [ext_resource type="Script" uid="uid://bbbxh6x33uifx" path="res://Scripts/npc.gd" id="13_as4v2"]
 [ext_resource type="Script" uid="uid://dylhyikumdyij" path="res://Scripts/sprite_billboard.gd" id="13_c8rvf"]
@@ -115,6 +118,7 @@ radius = 1.0693359
 [node name="Node3D" type="Node3D" unique_id=772939061]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=147121859]
+script = ExtResource("1_sr5jl")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1083261971]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.560995, 1.8574126, 4.8802238)
@@ -158,6 +162,8 @@ script = ExtResource("2_tq6uv")
 [node name="Shotgun" type="Node3D" parent="Player/WeaponManager" unique_id=351287195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4999998, 0)
 script = ExtResource("4_5uqhi")
+shoot_sound = ExtResource("8_i67pj")
+reload_sound = ExtResource("9_qpw16")
 
 [node name="InteractionManager" type="Node" parent="Player" unique_id=1469250180]
 script = ExtResource("7_c8rvf")
