@@ -37,7 +37,7 @@ func throw_fireball():
 	var fireball = fireball_scene.instantiate()
 	
 	# Set direction BEFORE adding to scene tree
-	var target := player.global_position + Vector3(0, 1.5, 0)
+	var target := player.global_position + Vector3(0, 1, 0)
 	var spawn_pos := global_position + Vector3(0, 2.9, -1.5)
 	fireball.direction = (target - spawn_pos).normalized()
 	fireball.instigator = self

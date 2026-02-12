@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://c7daaabjo8by1"]
+
+[ext_resource type="Script" uid="uid://dx0wly52fi5fe" path="res://Scripts/player.gd" id="1_b26j0"]
+[ext_resource type="Texture2D" uid="uid://btp3enxjg1yd1" path="res://Assets/weapons/shotgun_idle.png" id="2_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://dlhmm3oo0c54s" path="res://Assets/weapons/shotgun_fire.png" id="3_nvl01"]
+[ext_resource type="PackedScene" uid="uid://4dh3yiav5t7o" path="res://Assets/UI/hud.tscn" id="4_ivps1"]
+[ext_resource type="Script" uid="uid://bw3ov0wh5p4v7" path="res://Scripts/weapon_manager.gd" id="5_urp6f"]
+[ext_resource type="Script" uid="uid://dt7ypqybx5mys" path="res://Scripts/shotgun.gd" id="6_bwjto"]
+[ext_resource type="AudioStream" uid="uid://cvi3u10sb6pg3" path="res://Assets/FX/shotgun_fire.wav" id="7_606se"]
+[ext_resource type="AudioStream" uid="uid://knutvuu6np8u" path="res://Assets/FX/shotgun_reload.wav" id="8_u1c27"]
+[ext_resource type="Script" uid="uid://ryvfmyypw1a0" path="res://Scripts/interaction_manager.gd" id="9_op7ga"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc3a7"]
+atlas = ExtResource("2_n7ghd")
+region = Rect2(0, 0, 112, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8rvf"]
+atlas = ExtResource("2_n7ghd")
+region = Rect2(0, 0, 112, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as4v2"]
+atlas = ExtResource("3_nvl01")
+region = Rect2(0, 0, 112, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sr5jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc3a7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8rvf")
+}],
+"loop": false,
+"name": &"reload",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_as4v2")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_as4v2"]
+emission_shape = 3
+emission_box_extents = Vector3(9.565, 7.515, 16.135)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+color = Color(0.57, 0.57, 0.57, 0.5647059)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_as4v2"]
+_limits = [0.0, 0.029782955, 0.0, 1.0]
+_data = [Vector2(0.070336394, 0.008623205), 0.0, 0.0, 0, 0, Vector2(0.6666667, 0.023408677), 0.0, 0.0, 0, 0, Vector2(1, 0.006372165), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr5jl"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_sr5jl"]
+material = SubResource("StandardMaterial3D_sr5jl")
+section_segments = 2
+curve = SubResource("Curve_as4v2")
+
+[node name="Player" type="CharacterBody3D" unique_id=2146751391]
+script = ExtResource("1_b26j0")
+walk_speed = null
+sprint_speed = null
+crouch_speed = null
+acceleration = null
+friction = null
+gravity = null
+jump_force = null
+mouse_sensitivity = null
+max_look_up = null
+max_look_down = null
+stand_height = null
+crouch_height = null
+crouch_camera_y = null
+stand_camera_y = null
+crouch_lerp_speed = null
+health = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2140864228]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_a202f")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1306859873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.905, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1741938210]
+current = true
+fov = 85.0
+
+[node name="WeaponSprite" type="AnimatedSprite3D" parent="CameraPivot/Camera3D" unique_id=1002970925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52985954, -0.83171034, -1.1326036)
+shaded = true
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+render_priority = 1
+sprite_frames = SubResource("SpriteFrames_sr5jl")
+animation = &"idle"
+
+[node name="HUD" parent="CameraPivot/Camera3D" unique_id=1922200291 instance=ExtResource("4_ivps1")]
+
+[node name="Flashlight" type="SpotLight3D" parent="CameraPivot/Camera3D" unique_id=1126919951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10202408, 1.036931)
+visible = false
+light_energy = 12.966
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+spot_range = 66.36368
+spot_angle = 32.4255
+
+[node name="WeaponManager" type="Node3D" parent="." unique_id=1876371885]
+script = ExtResource("5_urp6f")
+
+[node name="Shotgun" type="Node3D" parent="WeaponManager" unique_id=2093159192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4999998, 0)
+script = ExtResource("6_bwjto")
+shoot_sound = ExtResource("7_606se")
+reload_sound = ExtResource("8_u1c27")
+
+[node name="InteractionManager" type="Node" parent="." unique_id=1670534389]
+script = ExtResource("9_op7ga")
+
+[node name="Rain" type="GPUParticles3D" parent="." unique_id=377628356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7809343, 0)
+amount = 500
+lifetime = 2.0
+randomness = 0.51
+collision_base_size = 0.74
+visibility_aabb = AABB(-10, -10, -10, 20, 20, 20)
+trail_enabled = true
+trail_lifetime = 0.08
+process_material = SubResource("ParticleProcessMaterial_as4v2")
+draw_pass_1 = SubResource("RibbonTrailMesh_sr5jl")
+
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="." unique_id=571192649]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -1.4462919)
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="." unique_id=1083269475]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.622797, 0)
+target_position = Vector3(0, -0.75, 0)

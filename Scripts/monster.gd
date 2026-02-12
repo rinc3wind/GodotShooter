@@ -82,30 +82,27 @@ func _physics_process(delta):
 func move_toward_player(_delta):
 	if player == null:
 		return
-	
 	# Don't move while playing damage animation
 	if is_playing_damage_animation:
 		velocity = Vector3.ZERO
 		return
-	
 	nav_agent.target_position = player.global_position
 	
-	if nav_agent.is_target_reachable():
-		var current_pos := global_transform.origin
-		var next_path_pos := nav_agent.get_next_path_position()
-		
-		# Calculate velocity (GZDoom-style: ignore Y for movement)
-		var new_velocity := (next_path_pos - current_pos).normalized() * speed
-		velocity.x = new_velocity.x
-		velocity.z = new_velocity.z
-		
-		# Face movement direction
-		if velocity.length() > 0.1:
-			var look_target := Vector3(next_path_pos.x, global_position.y, next_path_pos.z)
-			look_at(look_target, Vector3.UP)
-		
-		move_and_slide()
-		on_moving()
+	var current_pos := global_transform.origin
+	var next_path_pos := nav_agent.get_next_path_position()
+	
+	# Calculate velocity (GZDoom-style: ignore Y for movement)
+	var new_velocity := (next_path_pos - current_pos).normalized() * speed
+	velocity.x = new_velocity.x
+	velocity.z = new_velocity.z
+	
+	# Face movement direction
+	if velocity.length() > 0.1:
+		var look_target := Vector3(next_path_pos.x, global_position.y, next_path_pos.z)
+		look_at(look_target, Vector3.UP)
+	
+	move_and_slide()
+	on_moving()
 
 # --------------------
 # Combat
