@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwu4mwepv5lkq" path="res://Scripts/audio_stream_player_2d.gd" id="1_sr5jl"]
 [ext_resource type="PackedScene" uid="uid://c7daaabjo8by1" path="res://player.tscn" id="2_wicfy"]
-[ext_resource type="PackedScene" uid="uid://dpa4kfsk8cacj" path="res://level.tscn" id="3_go42g"]
+[ext_resource type="PackedScene" uid="uid://68bmgl7xiv2g" path="res://level2.tscn" id="4_go42g"]
 
 [node name="Node3D" type="Node3D" unique_id=772939061]
 
@@ -12,4 +12,4 @@ script = ExtResource("1_sr5jl")
 [node name="Player" parent="." unique_id=2146751391 instance=ExtResource("2_wicfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.560995, 1.8574126, 4.8802238)
 
-[node name="Level" parent="." unique_id=699368113 instance=ExtResource("3_go42g")]
+[node name="Level2" parent="." unique_id=699368113 instance=ExtResource("4_go42g")]
