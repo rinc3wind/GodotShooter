@@ -25,7 +25,8 @@ func on_attack_start():
 	
 	# Throw fireball after a short delay (animation windup)
 	await get_tree().create_timer(0.3).timeout
-	throw_fireball()
+	if !is_playing_damage_animation:
+		throw_fireball()
 
 func get_attack_duration() -> float:
 	return 0.9  # Total attack duration for Imp

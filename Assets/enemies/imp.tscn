@@ -76,6 +76,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c8rvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8rvf")
 }],
 "loop": false,
 "name": &"damaged",
@@ -135,7 +138,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_c8rvf")
-animation = &"attack"
+animation = &"damaged"
 autoplay = "default"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=548127578]

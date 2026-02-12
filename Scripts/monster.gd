@@ -57,7 +57,7 @@ func _physics_process(delta):
 		damage_this_frame = 0
 		damage_positions.clear()
 	
-	if is_dead or is_attacking or player == null:
+	if is_dead or is_attacking or player == null or is_playing_damage_animation:
 		return
 	
 	# Wake up check
@@ -80,12 +80,8 @@ func _physics_process(delta):
 # Movement
 # --------------------
 func move_toward_player(_delta):
-	if player == null:
-		return
-	# Don't move while playing damage animation
-	if is_playing_damage_animation:
-		velocity = Vector3.ZERO
-		return
+	if player == null: return
+
 	nav_agent.target_position = player.global_position
 	
 	var current_pos := global_transform.origin
@@ -196,10 +192,6 @@ func on_wake_up():
 
 # Called while moving each frame
 func on_moving():
-	# Don't override damage animation
-	if is_playing_damage_animation:
-		return
-		
 	if sprite:
 		sprite.play("default")
 
